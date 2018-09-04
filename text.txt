@@ -55,7 +55,6 @@ print("enter the filename you want to compare")
 i=input()
 matching_calc(i)
 
-
-Thank You!!
+#Thank you!!
 
 

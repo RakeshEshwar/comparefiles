@@ -1,4 +1,59 @@
-welcome to the text
+import difflib
+import os
 
-  good evening!!
-       Have a Nice Day!
+#using user-defined function
+def matching_calc(filename):
+    filenames=[]
+    filenames=os.listdir("/home/terralogic/chidananda")
+    print(filenames)
+    position=filenames.index(filename)
+    print(position)
+    for i in range(0,len(filenames)):
+        while(i<position):
+
+            s=difflib.SequenceMatcher(None,filenames[position],filenames[i])
+            diff=round(s.ratio()*100,3)
+            print(filenames[position] +" is "+ str(float(diff))+" % similar to " +filenames[i])
+            i+=1
+            """s=difflib.SequenceMatcher(None,filenames[position],filenames[i+1])
+            diff=round(s.ratio()*100,3)
+            print(filenames[position] +" is "+ str(float(diff))+" % similar to " +filenames[i+1])"""
+
+first="/home/terralogic/chidananda/ta.py"
+second="/home/terralogic/chidananda/tb.py"
+third="/home/terralogic/chidananda/tc.py"
+fourth="/home/terralogic/chidananda/td.py"
+fifth="/home/terralogic/chidananda/te.py"
+
+lines1=open(first).readlines()
+lines2=open(second).readlines()
+lines3=open(third).readlines()
+lines4=open(fourth).readlines()
+lines5=open(fifth).readlines()
+
+difference1=difflib.HtmlDiff().make_file(lines1,lines2,first,second)
+difference2=difflib.HtmlDiff().make_file(lines1,lines3,first,third)
+difference3=difflib.HtmlDiff().make_file(lines1,lines4,first,fourth)
+difference4=difflib.HtmlDiff().make_file(lines1,lines5,first,fifth)
+
+diff_report1=open("/home/terralogic/chidananda1/difference1.html",'w')
+diff_report2=open("/home/terralogic/chidananda1/difference2.html",'w')
+diff_report3=open("/home/terralogic/chidananda1/difference3.html",'w')
+diff_report4=open("/home/terralogic/chidananda1/difference4.html",'w')
+
+diff_report1.write(difference1)
+diff_report2.write(difference2)
+diff_report3.write(difference3)
+diff_report4.write(difference4)
+
+diff_report1.close()
+diff_report2.close()
+diff_report3.close()
+diff_report4.close()       
+
+print("enter the filename you want to compare")
+i=input()
+matching_calc(i)
+
+
+

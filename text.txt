@@ -24,32 +24,39 @@ second="/home/terralogic/chidananda/tb.py"
 third="/home/terralogic/chidananda/tc.py"
 fourth="/home/terralogic/chidananda/td.py"
 fifth="/home/terralogic/chidananda/te.py"
+sixth="/home/terralogic/chidnanda/tf.py"
 
 lines1=open(first).readlines()
 lines2=open(second).readlines()
 lines3=open(third).readlines()
 lines4=open(fourth).readlines()
 lines5=open(fifth).readlines()
+lines6=open(sixth).readlines()
 
 difference1=difflib.HtmlDiff().make_file(lines1,lines2,first,second)
 difference2=difflib.HtmlDiff().make_file(lines1,lines3,first,third)
 difference3=difflib.HtmlDiff().make_file(lines1,lines4,first,fourth)
 difference4=difflib.HtmlDiff().make_file(lines1,lines5,first,fifth)
+difference5=difflib.HtmlDiff().make_file(lines1,lines5,first,sixth)
+
 
 diff_report1=open("/home/terralogic/chidananda1/difference1.html",'w')
 diff_report2=open("/home/terralogic/chidananda1/difference2.html",'w')
 diff_report3=open("/home/terralogic/chidananda1/difference3.html",'w')
 diff_report4=open("/home/terralogic/chidananda1/difference4.html",'w')
+diff_report5=open("/home/terralogic/chidananda1/difference5.html",'w')
 
 diff_report1.write(difference1)
 diff_report2.write(difference2)
 diff_report3.write(difference3)
 diff_report4.write(difference4)
+diff_report5.write(difference5)
 
 diff_report1.close()
 diff_report2.close()
 diff_report3.close()
 diff_report4.close()       
+diff_report5.close()
 
 print("enter the filename you want to compare")
 i=input()
